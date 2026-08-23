@@ -1,16 +1,16 @@
 //SPDX-Licence-Identifier:MIT
 pragma solidity ^0.8.13;
 
-import { Test } from 'forge-std/Test.sol';
-import { SecureVault} from '../src/SecureVault.sol';
+import {Test} from "forge-std/Test.sol";
+import {SecureVault} from "../src/SecureVault.sol";
 
 contract SecureVaultTest is Test {
     SecureVault public vault;
 
-    address alice = makeAddr('alice');
-    address bob = makeAddr('bob');
+    address alice = makeAddr("alice");
+    address bob = makeAddr("bob");
 
-    function setUp() public{
+    function setUp() public {
         vault = new SecureVault();
 
         vm.deal(alice, 10 ether);
@@ -24,10 +24,10 @@ contract SecureVaultTest is Test {
         assertEq(address(vault).balance, 1 ether);
     }
 
-    function test_withdraw()  public {
+    function test_withdraw() public {
         vm.startPrank(alice);
 
-        vault.deposit{value:5 ether}();
+        vault.deposit{value: 5 ether}();
 
         uint256 aliceBalanceBefore = alice.balance;
 
@@ -54,7 +54,7 @@ contract SecureVaultTest is Test {
         assertEq(address(vault).balance, 1 ether);
     }
 
-    function test_bobCannotWithdrawAliceBalance() public{
+    function test_bobCannotWithdrawAliceBalance() public {
         vm.prank(alice);
 
         vault.deposit{value: 5 ether}();

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 contract SecureVault {
-    mapping (address => uint256) public balances;
+    mapping(address => uint256) public balances;
 
     function deposit() external payable {
         balances[msg.sender] += msg.value;
@@ -13,6 +13,5 @@ contract SecureVault {
         balances[msg.sender] -= amount;
 
         payable(msg.sender).transfer(amount);
-
     }
 }

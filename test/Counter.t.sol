@@ -6,8 +6,8 @@ import {Counter} from "../src/Counter.sol";
 
 contract CounterTest is Test {
     Counter public counter;
-    address alice = makeAddr('alice');
-    address bob = makeAddr('bob');
+    address alice = makeAddr("alice");
+    address bob = makeAddr("bob");
 
     function setUp() public {
         counter = new Counter();
@@ -24,11 +24,10 @@ contract CounterTest is Test {
         assertEq(counter.number(), x);
     }
 
-    function  test_caller()  public {
+    function test_caller() public {
         vm.prank(alice);
 
         assertEq(counter.getCaller(), alice);
-
     }
 
     function test_OwnerCanReset() public {

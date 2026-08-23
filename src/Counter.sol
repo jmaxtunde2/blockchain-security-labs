@@ -5,7 +5,7 @@ contract Counter {
     uint256 public number;
     address owner;
 
-    constructor(){
+    constructor() {
         owner = msg.sender;
     }
 
@@ -14,7 +14,7 @@ contract Counter {
     }
 
     function increment() public {
-        number ++;
+        number++;
     }
 
     function getCaller() public view returns (address) {
