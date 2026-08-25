@@ -8,6 +8,8 @@ contract SecureVault {
         balances[msg.sender] += msg.value;
     }
 
+    // This function used transfer function (2,300 gas)
+
     function withdrawal(uint256 amount) external {
         require(balances[msg.sender] >= amount, "Insufficient Balance");
         balances[msg.sender] -= amount;
